@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WalmartExercise</string>
+    <string name="retrieving_countries">Retrieving Countries</string>
+    <string name="washington_d_c">Washington,D.C.</string>
+    <string name="us">US</string>
+    <string name="na">NA</string>
+    <string name="united_states_of_america">United States of America</string>
+</resources>
