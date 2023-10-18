@@ -22,8 +22,8 @@ class DisplayCountryFragment: ViewModelFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCountryListBinding.inflate(layoutInflater)
-        viewModel.setLoading()
         configureObserver()
+        viewModel.getCountries()
         return binding.root
     }
 
@@ -31,7 +31,8 @@ class DisplayCountryFragment: ViewModelFragment() {
         viewModel.countries.observe(viewLifecycleOwner) { uiState ->
             when (uiState) {
                 is UIState.Loading -> {
-                    viewModel.getCountries()
+                    binding.loadingInfo.visibility = View.VISIBLE
+                    binding.loadingText.visibility = View.VISIBLE
                 }
                 is UIState.Error -> {
                     binding.loadingInfo.visibility = View.GONE

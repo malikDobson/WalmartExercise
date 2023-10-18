@@ -21,8 +21,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.commit {
-            replace(R.id.fragment_activity_main, DisplayCountryFragment())
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragment_activity_main)
+        if (fragment == null){
+            supportFragmentManager.commit {
+                add(R.id.fragment_activity_main, DisplayCountryFragment())
+            }
         }
     }
 }

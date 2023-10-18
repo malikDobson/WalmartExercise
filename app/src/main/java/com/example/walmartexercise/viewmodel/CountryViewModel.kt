@@ -26,6 +26,8 @@ class CountryViewModel(
     val countries: LiveData<UIState>
         get() = _countries
 
+
+
     private val coroutineExceptionHandler by lazy {
         CoroutineExceptionHandler { coroutineContext, throwable ->
             Log.e("CountryViewModel",
@@ -39,6 +41,11 @@ class CountryViewModel(
     }
 
     fun getCountries(){
+        if(_countries.value!=null)
+            return
+
+        setLoading()
+
         viewModelSafeScope.launch(dispatcher) {
             repository.getCountries().collect{
                 _countries.postValue(it)
